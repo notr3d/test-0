@@ -1,17 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>title</title>
+  <title>Hello</title>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&amp;subset=cyrillic" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-  
+  <header class="site-header">
+    <div class="wrapper">
+      <div class="site-logo">
+        <a href="#">
+          <img src="img/site-logo.png" alt="Captain Quack">
+        </a>
+      </div>
+    </div>
+  </header>
+  <main class="site-content">
+    <div class="wrapper">
+      <div class="site-heading">
+        <h1>¡Ay caramba!</h1>
+      </div>
+      <div class="car-filter">
+        <div class="form">
+          <form action="#">
+            <div class="container">
+              <div class="row">
+                <div class="input-item input-item--big">
+                  <input type="text" id="car-filter-name" name="car-filter-name">
+                  <label for="car-filter-name">Название</label>
+                </div>
+                <div class="input-item">
+                  <input type="text" id="car-filter-price" name="car-filter-price">
+                  <label for="car-filter-price">Цена</label>
+                </div>
+                <div class="input-item">
+                  <input type="text" id="car-filter-year" name="car-filter-year">
+                  <label for="car-filter-year">Год</label>
+                </div>
+                <div class="input-item input-item--biggest">
+                  <textarea id="car-filter-description" name="car-filter-description" rows="1"></textarea>
+                  <label for="car-filter-description">Описание</label>
+                </div>
+                <div class="car-color">
+                  <div class="car-color__heading">Цвет</div>
+                  <div class="car-color__wrapper">
+                    <div class="car-color__item car-color__item--white">
+                      <input type="radio" id="car-color-1" name="car-color" value="car-color-1">
+                      <label for="car-color-1"><span>Белый</span></label>
+                    </div>
+                    <div class="car-color__item car-color__item--black">
+                      <input type="radio" id="car-color-2" name="car-color" value="car-color-2">
+                      <label for="car-color-2"><span>Черный</span></label>
+                    </div>
+                    <div class="car-color__item car-color__item--grey">
+                      <input type="radio" id="car-color-3" name="car-color" value="car-color-3">
+                      <label for="car-color-3"><span>Серый</span></label>
+                    </div>
+                    <div class="car-color__item car-color__item--red">
+                      <input type="radio" id="car-color-4" name="car-color" value="car-color-4">
+                      <label for="car-color-4"><span>Красный</span></label>
+                    </div>
+                    <div class="car-color__item car-color__item--green">
+                      <input type="radio" id="car-color-5" name="car-color" value="car-color-5">
+                      <label for="car-color-5"><span>Зеленый</span></label>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="input-item">
+                  <select name="car-filter-status" id="car-filter-status">
+                    <option value="В наличии">В наличии</option>
+                    <option value="Ожидается">Ожидается</option>
+                    <option value="Нет в наличии">Нет в наличии</option>
+                  </select>
+                </div>
+                <div class="input-item">
+                  <button type="submit">Отправить</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="car-table">
+        <h2 class="car-table__header">Автомобили в наличии</h2>
+        <div class="car-table__wrapper">
+          <div class="table">
+            <div class="tr thead">
+              <div class="th">Название</div>
+              <div class="th">Год</div>
+              <div class="th">Цвет</div>
+              <div class="th">Статус</div>
+              <div class="th">Цена</div>
+              <div class="th"></div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div>1.6 MT Ambiente 85 л.с. МКПП</div>
+                <div class="car-table__description">+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</div>
+              </div>
+              <div class="td td--year">2012</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--black">Черный</span>
+              </div>
+              <div class="td td--status">Ожидается</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td td">
+                <div>1.6 MT Ambiente Plus 105 л.с. МКПП</div>
+              </div>
+              <div class="td td--year">2012</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--white">Белый</span>
+              </div>
+              <div class="td td--status">Ожидается</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div>1.6 MT Trend 105 л.с. МКПП</div>
+              </div>
+              <div class="td td--year">2012</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--black">Черный</span>
+              </div>
+              <div class="td td--status">Нет в наличии</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div>1.6 PowerShift Trend Sport 105 л.с. АКПП</div>
+              </div>
+              <div class="td td--year">2012</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--grey">Серый</span>
+              </div>
+              <div class="td td--status">Ожидается</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                <div>2.0 MT Trend Sport 150 л.с. МКПП</div>
+              </div>
+              <div class="td td--year">2012</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--red">Красный</span>
+              </div>
+              <div class="td td--status">Ожидается</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+            <div class="tr">
+              <div class="td">
+                 <div>2.0 PowerShift Trend Sport 150 л.с. АКПП</div>
+                  <div class="car-table__description">+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</div>
+              </div>
+              <div class="td td--year">2013</div>
+              <div class="td td--color">
+                <span class="car-table__color car-table__color--green">Зеленый</span>
+              </div>
+              <div class="td td--status">Нет в наличии</div>
+              <div class="td td--price">1 689 000 руб.</div>
+              <div class="td td--delete">
+                <button>Удалить</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrapper">
+      <div class="copy">
+        <div>© 2015 CAPTAIN QUACK</div>
+        <div>Десница тысячелетия и моллюск!</div>
+      </div>
+    </div>
+  </footer>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/bootstrap.js"></script>
   <script src="js/script.js"></script>
 </body>
 </html>
