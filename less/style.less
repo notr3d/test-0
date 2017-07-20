@@ -443,7 +443,7 @@ body, input, textarea {
   }
   &__color {
     display: inline-block;
-    vertical-align: top;
+    vertical-align: text-top;
     width: 20px;
     height: 20px;
     border-radius: 50%;
@@ -462,6 +462,10 @@ body, input, textarea {
     &--red {
       background: #d74345;
     }
+    &--grey {
+      background: #cbcbcc;
+    }
+    
     &--green {
       background: #88c504;
     }
@@ -501,11 +505,13 @@ body, input, textarea {
         padding: 14px 6px;
         &:first-child {
           padding-left: 14px;
+          min-width: 260px;
           max-width: 260px;
         }
       }
       @media @d {
         &:first-child {
+          min-width: 390px;
           max-width: 390px;
         }
       }
@@ -517,11 +523,13 @@ body, input, textarea {
         padding: 6px;
         &:first-child {
           padding-left: 14px;
+          min-width: 260px;
           max-width: 260px;
         }
       }
       @media @d {
         &:first-child {
+          min-width: 390px;
           max-width: 390px;
         }
         padding: 8px 6px 6px;

@@ -426,7 +426,7 @@ textarea {
 }
 .car-table__color {
   display: inline-block;
-  vertical-align: top;
+  vertical-align: text-top;
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -445,6 +445,9 @@ textarea {
 }
 .car-table__color--red {
   background: #d74345;
+}
+.car-table__color--grey {
+  background: #cbcbcc;
 }
 .car-table__color--green {
   background: #88c504;
@@ -493,11 +496,13 @@ textarea {
   }
   .car-table .table .th:first-child {
     padding-left: 14px;
+    min-width: 260px;
     max-width: 260px;
   }
 }
 @media (min-width: 1024px) {
   .car-table .table .th:first-child {
+    min-width: 390px;
     max-width: 390px;
   }
 }
@@ -509,6 +514,7 @@ textarea {
   }
   .car-table .table .td:first-child {
     padding-left: 14px;
+    min-width: 260px;
     max-width: 260px;
   }
 }
@@ -517,6 +523,7 @@ textarea {
     padding: 8px 6px 6px;
   }
   .car-table .table .td:first-child {
+    min-width: 390px;
     max-width: 390px;
   }
 }

@@ -35,7 +35,7 @@ $(document).ready(function(){
     var container = wrapper.find('.custom-select__container');
     $(this).find('option').each(function(){
       if (!$(this).is(':disabled')){
-        container.append('<div class="custom-select__option">' + $(this).val() + '</div>')
+        container.append('<div class="custom-select__option">' + $(this).text() + '</div>')
       }
     });
     
@@ -88,7 +88,7 @@ $(document).ready(function(){
         case 'car-filter-description': 
           key = 'description';
           break;
-        case 'car-filter-color': 
+        case 'car-color': 
           key = 'color';
           break;
         case 'car-filter-status': 
@@ -114,7 +114,6 @@ $(document).ready(function(){
   $.getJSON(src, function(data){
     $.each(data, function(key, car){
       addCar(car);
-     //carTable.append(template);
     });
   });
   
@@ -141,6 +140,10 @@ $(document).ready(function(){
         carColor = 'Зеленый';
         carColorClass = 'car-table__color--green';
         break;
+        case 'grey': 
+        carColor = 'Серый';
+        carColorClass = 'car-table__color--grey';
+        break;        
       default:
         carColor = 'Неизестно';
         carColorClass = 'car-table__color--black'; //пусть будет черный

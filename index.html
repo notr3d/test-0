@@ -27,15 +27,15 @@
             <div class="container">
               <div class="row">
                 <div class="input-item input-item--big">
-                  <input type="text" id="car-filter-name" name="car-filter-name">
+                  <input type="text" id="car-filter-name" name="car-filter-name" required>
                   <label for="car-filter-name">Название</label>
                 </div>
                 <div class="input-item">
-                  <input type="text" id="car-filter-price" name="car-filter-price">
+                  <input type="text" id="car-filter-price" name="car-filter-price" pattern="\d*" required>
                   <label for="car-filter-price">Цена</label>
                 </div>
                 <div class="input-item">
-                  <input type="text" id="car-filter-year" name="car-filter-year">
+                  <input type="text" id="car-filter-year" name="car-filter-year" pattern="^\d{4}$" required>
                   <label for="car-filter-year">Год</label>
                 </div>
                 <div class="input-item input-item--biggest">
@@ -47,23 +47,23 @@
                   <div class="car-color">
                     <div class="car-color__wrapper">
                       <div class="car-color__item car-color__item--white">
-                        <input type="radio" id="car-color-1" name="car-color" value="car-color-1">
+                        <input type="radio" id="car-color-1" name="car-color" value="white">
                         <label for="car-color-1"><span>Белый</span></label>
                       </div>
                       <div class="car-color__item car-color__item--black">
-                        <input type="radio" id="car-color-2" name="car-color" value="car-color-2">
+                        <input type="radio" id="car-color-2" name="car-color" value="black">
                         <label for="car-color-2"><span>Черный</span></label>
                       </div>
                       <div class="car-color__item car-color__item--grey">
-                        <input type="radio" id="car-color-3" name="car-color" value="car-color-3">
+                        <input type="radio" id="car-color-3" name="car-color" value="grey">
                         <label for="car-color-3"><span>Серый</span></label>
                       </div>
                       <div class="car-color__item car-color__item--red">
-                        <input type="radio" id="car-color-4" name="car-color" value="car-color-4">
+                        <input type="radio" id="car-color-4" name="car-color" value="red">
                         <label for="car-color-4"><span>Красный</span></label>
                       </div>
                       <div class="car-color__item car-color__item--green">
-                        <input type="radio" id="car-color-5" name="car-color" value="car-color-5">
+                        <input type="radio" id="car-color-5" name="car-color" value="green">
                         <label for="car-color-5"><span>Зеленый</span></label>
                       </div>
 
@@ -72,9 +72,9 @@
                 </div>
                 <div class="input-item input-item--no-label">
                   <select name="car-filter-status" id="car-filter-status" data-name="статус">
-                    <option value="В наличии">В наличии</option>
-                    <option value="Ожидается">Ожидается</option>
-                    <option value="Нет в наличии">Нет в наличии</option>
+                    <option value="in_stock">В наличии</option>
+                    <option value="pednding">Ожидается</option>
+                    <option value="out_of_stock">Нет в наличии</option>
                   </select>
                 </div>
                 <div class="input-item input-item--no-label">
