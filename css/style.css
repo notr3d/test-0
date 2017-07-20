@@ -15,18 +15,19 @@ input,
 textarea {
   font-family: 'Roboto', sans-serif;
 }
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 .wrapper {
   padding: 0 10px;
   margin: 0 auto;
 }
 @media (min-width: 720px) {
   .wrapper {
-    max-width: 720px;
-  }
-}
-@media (min-width: 1024px) {
-  .wrapper {
-    max-width: 1024px;
+    min-width: 720px;
+    max-width: 980px;
   }
 }
 .container::after {
@@ -37,25 +38,59 @@ textarea {
 .row {
   margin: 0 -10px;
 }
-@media (min-width: 720px) {
-  .row {
-    margin: 0 -20px;
-  }
-}
 .site-header {
   background: #282d30;
-  text-align: center;
   color: #fff;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+}
+@media (min-width: 720px) {
+  .site-header {
+    padding-bottom: 0;
+    margin-bottom: 53px;
+  }
 }
 .site-logo {
-  display: inline-block;
   max-width: 297px;
-  max-height: 63px;
+  margin: 0 auto;
+}
+@media (min-width: 720px) {
+  .site-logo {
+    max-width: 496px;
+  }
+}
+.site-logo a {
+  display: inline-block;
+  width: 100%;
+  height: 63px;
+  position: relative;
+  left: -20px;
+  bottom: -15px;
+  background: url(../img/site-logo.png) no-repeat center;
+  background-size: contain;
+}
+@media (min-width: 720px) {
+  .site-logo a {
+    left: -28px;
+    bottom: -5px;
+    max-width: none;
+    height: 104px;
+    background-image: url(../img/site-logo-big.png);
+  }
+}
+.copy {
+  font-size: 11px;
+  text-align: center;
 }
 .site-footer {
   background: #282d30;
-  text-align: center;
   color: #fff;
+  padding: 36px 0;
+}
+@media (min-width: 720px) {
+  .site-heading {
+    margin-bottom: 25px;
+  }
 }
 .site-heading h1 {
   margin: 0;
@@ -66,11 +101,16 @@ textarea {
 }
 .input-item {
   position: relative;
-  margin-bottom: 10px;
   padding-top: 30px;
   float: left;
   width: 50%;
-  padding: 30px 20px 0;
+  padding: 30px 10px 0;
+}
+.input-item--static {
+  padding-top: 12px;
+}
+.input-item--no-label {
+  padding-top: 22px;
 }
 @media (min-width: 720px) {
   .input-item {
@@ -88,34 +128,34 @@ textarea {
 .input-item--biggest {
   width: 100%;
 }
-.input-item input {
+.input-item input[type="text"] {
   display: block;
   width: 100%;
   border: 1px solid #dcdcdc;
   border-bottom-width: 2px;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 12px;
   color: #111111;
   outline: none;
 }
-.input-item input.is-active + label {
+.input-item input[type="text"].is-active + label {
   bottom: auto;
   top: 0;
   cursor: default;
 }
-.input-item input.is-focused {
+.input-item input[type="text"].is-focused {
   border-bottom-color: #111111;
 }
-.input-item input + label {
+.input-item input[type="text"] + label {
   position: absolute;
-  left: 20px;
+  left: 12px;
   bottom: 0;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 12px;
   color: #999999;
   cursor: text;
 }
-.input-item input:hover {
+.input-item input[type="text"]:hover {
   border-bottom-color: #c4092f;
 }
 .input-item textarea {
@@ -123,7 +163,7 @@ textarea {
   width: 100%;
   border: 1px solid #dcdcdc;
   border-bottom-width: 2px;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 12px;
   color: #111111;
   outline: none;
@@ -131,9 +171,9 @@ textarea {
 }
 .input-item textarea + label {
   position: absolute;
-  left: 20px;
+  left: 12px;
   bottom: 0;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 12px;
   color: #999999;
 }
@@ -152,7 +192,7 @@ textarea {
   width: 100%;
   border: 1px solid #dcdcdc;
   border-bottom-width: 2px;
-  padding: 8px;
+  padding: 12px 8px;
   font-size: 12px;
   color: #111111;
   outline: none;
@@ -175,7 +215,7 @@ textarea {
 .input-item .custom-select__button {
   color: #999999;
   font-size: 12px;
-  padding: 8px;
+  padding: 12px 8px;
   border: 1px solid #dcdcdc;
   border-bottom-width: 2px;
   position: relative;
@@ -193,7 +233,7 @@ textarea {
   border-top-color: #111111;
   border-width: 6px 6px 0;
   position: absolute;
-  right: 8px;
+  right: 16px;
   top: 50%;
   margin-top: -3px;
 }
@@ -216,10 +256,10 @@ textarea {
 .input-item .custom-select__option:hover {
   color: #222222;
 }
-.input-item button {
+.input-item button[type="submit"] {
   display: block;
   width: 100%;
-  padding: 8px;
+  padding: 12px 8px;
   background: #c4092f;
   color: #fff;
   text-align: center;
@@ -231,29 +271,43 @@ textarea {
   font-size: 16px;
   border-radius: 4px;
 }
-.input-item button::after {
+.input-item button[type="submit"]::after {
   content: '';
   display: inline-block;
-  margin-left: 10px;
+  vertical-align: middle;
+  margin-left: 2px;
+  margin-bottom: 4px;
   width: 5px;
   height: 5px;
-  border-top: 4px solid #fff;
-  border-right: 4px solid #fff;
+  border-top: 3px solid #fff;
+  border-right: 3px solid #fff;
   transform: rotate(45deg);
-  vertical-align: middle;
 }
-.car-color {
-  padding: 0 20px;
+.input-item .label-like {
+  font-size: 12px;
+  color: #999999;
+}
+.car-filter {
+  margin-bottom: 52px;
 }
 @media (min-width: 720px) {
-  .car-color {
-    float: left;
-    width: 33.333333%;
+  .car-filter {
+    margin-bottom: 40px;
   }
 }
+@media (min-width: 1024px) {
+  .car-filter {
+    margin-bottom: 157px;
+  }
+}
+.car-color__wrapper::after {
+  content: "";
+  clear: both;
+  display: table;
+}
 .car-color__item {
-  display: inline-block;
-  margin-right: 30px;
+  float: left;
+  margin-right: 15px;
 }
 .car-color__item:last-child {
   margin-right: 0;
@@ -296,17 +350,26 @@ textarea {
 .car-color__item--green span {
   background-color: #89c600;
 }
-.car-table {
-  margin-bottom: 20px;
+@media (min-width: 720px) {
+  .car-table {
+    margin-bottom: 150px;
+  }
+}
+@media (min-width: 1024px) {
+  .car-table {
+    margin-bottom: 312px;
+  }
 }
 .car-table__header {
   color: #111111;
   text-transform: uppercase;
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 700;
   position: relative;
-  padding-left: 20px;
+  padding-left: 15px;
   line-height: 1;
+  margin: 0;
+  margin-bottom: 26px;
 }
 .car-table__header::before {
   content: '';
@@ -334,10 +397,32 @@ textarea {
     overflow: hidden;
   }
 }
+.car-table__title {
+  margin-bottom: 15px;
+  max-width: 45%;
+}
+@media (min-width: 720px) {
+  .car-table__title {
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 95%;
+  }
+}
+@media (min-width: 1024px) {
+  .car-table__title {
+    max-width: none;
+  }
+}
 .car-table__description {
   color: #8b9497;
   font-size: 13px;
-  margin-top: 5px;
+}
+@media (max-width: 719px) {
+  .car-table__description {
+    margin-bottom: 15px;
+  }
 }
 .car-table__color {
   display: inline-block;
@@ -367,9 +452,15 @@ textarea {
 .car-table .table {
   background: #f5f7f7;
   font-weight: 300;
-  font-size: 15px;
+  font-size: 14px;
   display: table;
   width: 100%;
+  border-collapse: collapse;
+}
+@media (min-width: 720px) {
+  .car-table .table {
+    font-size: 15px;
+  }
 }
 .car-table .table .tr {
   border-bottom: 1px solid #e7eaeb;
@@ -377,7 +468,7 @@ textarea {
 @media (max-width: 719px) {
   .car-table .table .tr {
     position: relative;
-    padding: 20px;
+    padding: 20px 20px 26px;
   }
 }
 @media (min-width: 720px) {
@@ -398,34 +489,67 @@ textarea {
 @media (min-width: 720px) {
   .car-table .table .th {
     display: table-cell;
-    padding: 8px;
+    padding: 14px 6px;
+  }
+  .car-table .table .th:first-child {
+    padding-left: 14px;
+    max-width: 260px;
+  }
+}
+@media (min-width: 1024px) {
+  .car-table .table .th:first-child {
+    max-width: 390px;
   }
 }
 @media (min-width: 720px) {
   .car-table .table .td {
     border-bottom: 1px solid #e7eaeb;
     display: table-cell;
-    padding: 8px;
+    padding: 6px;
   }
+  .car-table .table .td:first-child {
+    padding-left: 14px;
+    max-width: 260px;
+  }
+}
+@media (min-width: 1024px) {
+  .car-table .table .td {
+    padding: 8px 6px 6px;
+  }
+  .car-table .table .td:first-child {
+    max-width: 390px;
+  }
+}
+.car-table .table .td--price {
+  white-space: nowrap;
 }
 @media (max-width: 719px) {
   .car-table .table .td--price {
     position: absolute;
     top: 20px;
-    right: 20px;
-    max-width: 150px;
+    right: 30px;
+    max-width: 105px;
   }
 }
 @media (max-width: 719px) {
   .car-table .table .td--color {
     position: absolute;
     top: 20px;
-    right: 170px;
+    right: 140px;
   }
+}
+@media (min-width: 720px) {
+  .car-table .table .td--color {
+    text-align: center;
+  }
+}
+.car-table .table .td--status {
+  white-space: nowrap;
 }
 @media (max-width: 719px) {
   .car-table .table .td--status {
     display: inline-block;
+    margin-left: 20px;
   }
 }
 @media (max-width: 719px) {
@@ -435,14 +559,16 @@ textarea {
 }
 @media (max-width: 719px) {
   .car-table .table .td--delete {
-    float: right;
+    position: absolute;
+    right: 20px;
+    bottom: 18px;
   }
 }
 .car-table .table button {
   background: #111111;
   color: #fff;
   border: none;
-  padding: 8px;
+  padding: 8px 12px;
   border-radius: 20px;
   cursor: pointer;
   outline: none;

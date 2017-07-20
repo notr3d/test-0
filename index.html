@@ -12,9 +12,7 @@
   <header class="site-header">
     <div class="wrapper">
       <div class="site-logo">
-        <a href="#">
-          <img src="img/site-logo.png" alt="Captain Quack">
-        </a>
+        <a href="#"></a>
       </div>
     </div>
   </header>
@@ -44,40 +42,42 @@
                   <textarea id="car-filter-description" name="car-filter-description" rows="1"></textarea>
                   <label for="car-filter-description">Описание</label>
                 </div>
-                <div class="car-color">
-                  <div class="car-color__heading">Цвет</div>
-                  <div class="car-color__wrapper">
-                    <div class="car-color__item car-color__item--white">
-                      <input type="radio" id="car-color-1" name="car-color" value="car-color-1">
-                      <label for="car-color-1"><span>Белый</span></label>
-                    </div>
-                    <div class="car-color__item car-color__item--black">
-                      <input type="radio" id="car-color-2" name="car-color" value="car-color-2">
-                      <label for="car-color-2"><span>Черный</span></label>
-                    </div>
-                    <div class="car-color__item car-color__item--grey">
-                      <input type="radio" id="car-color-3" name="car-color" value="car-color-3">
-                      <label for="car-color-3"><span>Серый</span></label>
-                    </div>
-                    <div class="car-color__item car-color__item--red">
-                      <input type="radio" id="car-color-4" name="car-color" value="car-color-4">
-                      <label for="car-color-4"><span>Красный</span></label>
-                    </div>
-                    <div class="car-color__item car-color__item--green">
-                      <input type="radio" id="car-color-5" name="car-color" value="car-color-5">
-                      <label for="car-color-5"><span>Зеленый</span></label>
-                    </div>
+                <div class="input-item input-item--static input-item--big">
+                  <span class="label-like">Цвет</span>
+                  <div class="car-color">
+                    <div class="car-color__wrapper">
+                      <div class="car-color__item car-color__item--white">
+                        <input type="radio" id="car-color-1" name="car-color" value="car-color-1">
+                        <label for="car-color-1"><span>Белый</span></label>
+                      </div>
+                      <div class="car-color__item car-color__item--black">
+                        <input type="radio" id="car-color-2" name="car-color" value="car-color-2">
+                        <label for="car-color-2"><span>Черный</span></label>
+                      </div>
+                      <div class="car-color__item car-color__item--grey">
+                        <input type="radio" id="car-color-3" name="car-color" value="car-color-3">
+                        <label for="car-color-3"><span>Серый</span></label>
+                      </div>
+                      <div class="car-color__item car-color__item--red">
+                        <input type="radio" id="car-color-4" name="car-color" value="car-color-4">
+                        <label for="car-color-4"><span>Красный</span></label>
+                      </div>
+                      <div class="car-color__item car-color__item--green">
+                        <input type="radio" id="car-color-5" name="car-color" value="car-color-5">
+                        <label for="car-color-5"><span>Зеленый</span></label>
+                      </div>
 
+                    </div>
                   </div>
                 </div>
-                <div class="input-item">
+                <div class="input-item input-item--no-label">
                   <select name="car-filter-status" id="car-filter-status" data-name="статус">
                     <option value="В наличии">В наличии</option>
                     <option value="Ожидается">Ожидается</option>
                     <option value="Нет в наличии">Нет в наличии</option>
                   </select>
                 </div>
-                <div class="input-item">
+                <div class="input-item input-item--no-label">
                   <button type="submit">Отправить</button>
                 </div>
               </div>
@@ -99,7 +99,7 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div>1.6 MT Ambiente 85 л.с. МКПП</div>
+                <div class="car-table__title">1.6 MT Ambiente 85 л.с. МКПП</div>
                 <div class="car-table__description">+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</div>
               </div>
               <div class="td td--year">2012</div>
@@ -114,7 +114,7 @@
             </div>
             <div class="tr">
               <div class="td td">
-                <div>1.6 MT Ambiente Plus 105 л.с. МКПП</div>
+                <div class="car-table__title">1.6 MT Ambiente Plus 105 л.с. МКПП</div>
               </div>
               <div class="td td--year">2012</div>
               <div class="td td--color">
@@ -128,13 +128,13 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div>1.6 MT Trend 105 л.с. МКПП</div>
+                <div class="car-table__title">1.6 MT Trend 105 л.с. МКПП</div>
               </div>
               <div class="td td--year">2012</div>
               <div class="td td--color">
                 <span class="car-table__color car-table__color--black">Черный</span>
               </div>
-              <div class="td td--status">Нет в наличии</div>
+              <div class="td td--status">В наличии</div>
               <div class="td td--price">1 689 000 руб.</div>
               <div class="td td--delete">
                 <button>Удалить</button>
@@ -142,7 +142,7 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div>1.6 PowerShift Trend Sport 105 л.с. АКПП</div>
+                <div class="car-table__title">1.6 PowerShift Trend Sport 105 л.с. АКПП</div>
               </div>
               <div class="td td--year">2012</div>
               <div class="td td--color">
@@ -156,7 +156,7 @@
             </div>
             <div class="tr">
               <div class="td">
-                <div>2.0 MT Trend Sport 150 л.с. МКПП</div>
+                <div class="car-table__title">2.0 MT Trend Sport 150 л.с. МКПП</div>
               </div>
               <div class="td td--year">2012</div>
               <div class="td td--color">
@@ -170,8 +170,8 @@
             </div>
             <div class="tr">
               <div class="td">
-                 <div>2.0 PowerShift Trend Sport 150 л.с. АКПП</div>
-                  <div class="car-table__description">+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</div>
+                <div class="car-table__title">2.0 PowerShift Trend Sport 150 л.с. АКПП</div>
+                <div class="car-table__description">+ доп. опция «Радио-навигационная система Amundasen 2DIN, CD, MP3</div>
               </div>
               <div class="td td--year">2013</div>
               <div class="td td--color">

@@ -31,18 +31,7 @@ body, input, textarea {
   font-family: 'Roboto', sans-serif;
 }
 
-.wrapper {
-  padding: 0 10px;
-  margin: 0 auto;
-  @media @t {
-    max-width: 720px;
-  }
-  @media @d {
-    max-width: 1024px;
-  }
-}
-
-.container {
+.clearfix {
   &::after {
     content: "";
     clear: both;
@@ -50,32 +39,74 @@ body, input, textarea {
   }
 }
 
-.row {
-  margin: 0 -10px;
+.wrapper {
+  padding: 0 10px;
+  margin: 0 auto;
   @media @t {
-    margin: 0 -20px;
+    min-width: 720px;
+    max-width: 980px;
   }
+}
+
+.container {
+  .clearfix();
+}
+
+.row {
+  margin: 0 -10px;  
 }
 
 .site-header {
   background: @color_grey_dark;
-  text-align: center;
   color: @color_white;
+  padding-bottom: 14px;
+  margin-bottom: 20px;
+  @media @t {
+    padding-bottom: 0;
+    margin-bottom: 53px;
+  }
 }
 
 .site-logo {
-  display: inline-block;
   max-width: 297px;
-  max-height: 63px;  
+  margin: 0 auto;
+  @media @t {
+    max-width: 496px;
+  }
+  a {
+    display: inline-block;
+    width: 100%;
+    height: 63px; 
+    position: relative;
+    left: -20px;
+    bottom: -15px;
+    background: url(../img/site-logo.png) no-repeat center;
+    background-size: contain;
+    @media @t {
+      left: -28px;
+      bottom: -5px;
+      max-width: none;
+      height: 104px;
+      background-image: url(../img/site-logo-big.png);
+    }
+  }
+}
+
+.copy {
+  font-size: 11px;
+  text-align: center;
 }
 
 .site-footer {
   background: @color_grey_dark;
-  text-align: center;
   color: @color_white;
+  padding: 36px 0;
 }
 
 .site-heading {
+  @media @t {
+    margin-bottom: 25px;
+  }
   h1 {
     margin: 0;
     text-align: center;
@@ -85,13 +116,19 @@ body, input, textarea {
   }
 }
 
+
 .input-item {
   position: relative;
-  margin-bottom: 10px;
   padding-top: 30px;
   float: left;
   width: 50%;
-  padding: 30px 20px 0;
+  padding: 30px 10px 0;
+  &--static {
+    padding-top: 12px;
+  }
+  &--no-label {
+    padding-top: 22px;
+  }  
   @media @t {
     width: 33.333333%;
   }
@@ -104,12 +141,12 @@ body, input, textarea {
   &--biggest {
     width: 100%;
   }
-  input {
+  input[type="text"] {
     display: block;
     width: 100%;
     border: 1px solid @color_grey_light;
     border-bottom-width: 2px;
-    padding: 8px;
+    padding: 12px 8px;
     font-size: 12px;
     color: @color_black;
     &.is-active {
@@ -125,9 +162,9 @@ body, input, textarea {
     outline: none;
     & + label {
       position: absolute;
-      left: 20px;
+      left: 12px;
       bottom: 0;
-      padding: 8px;
+      padding: 12px 8px;
       font-size: 12px;
       color: @color_grey;
       cursor: text;
@@ -142,16 +179,16 @@ body, input, textarea {
     width: 100%;
     border: 1px solid @color_grey_light;
     border-bottom-width: 2px;
-    padding: 8px;
+    padding: 12px 8px;
     font-size: 12px;
     color: @color_black;
     outline: none;
     resize: vertical;
     & + label {
       position: absolute;
-      left: 20px;
+      left: 12px;
       bottom: 0;
-      padding: 8px;
+      padding: 12px 8px;
       font-size: 12px;
       color: @color_grey;
     } 
@@ -160,7 +197,7 @@ body, input, textarea {
         bottom: auto;
         top: 0;
       }
-    }
+    }    
     &.is-focused {
       border-bottom-color: @color_black;      
     }
@@ -173,7 +210,7 @@ body, input, textarea {
     width: 100%;
     border: 1px solid @color_grey_light;
     border-bottom-width: 2px;
-    padding: 8px;
+    padding: 12px 8px;
     font-size: 12px;
     color: @color_black;
     outline: none;
@@ -197,7 +234,7 @@ body, input, textarea {
     &__button {
       color: #999999;
       font-size: 12px;
-      padding: 8px;
+      padding: 12px 8px;
       border: 1px solid @color_grey_light;
       border-bottom-width: 2px;
       position: relative;
@@ -214,7 +251,7 @@ body, input, textarea {
         border-top-color: @color_black;
         border-width: 6px 6px 0;
         position: absolute;
-        right: 8px;
+        right: 16px;
         top: 50%;
         margin-top: -3px;
       }
@@ -239,10 +276,10 @@ body, input, textarea {
       }
     }
   }
-  button {
+  button[type="submit"] {
     display: block;
     width: 100%;
-    padding: 8px;
+    padding: 12px 8px;
     background: @color_red;
     color: @color_white;
     text-align: center;
@@ -256,26 +293,39 @@ body, input, textarea {
     &::after {
       content: '';
       display: inline-block;
-      margin-left: 10px;
+      vertical-align: middle;
+      margin-left: 2px;
+      margin-bottom: 4px;
       width: 5px;
       height: 5px;
-      border-top: 4px solid @color_white;
-      border-right: 4px solid @color_white;
+      border-top: 3px solid @color_white;
+      border-right: 3px solid @color_white;
       transform: rotate(45deg);
-      vertical-align: middle;
     }
+  }
+  .label-like {
+    font-size: 12px;
+    color: @color_grey;
+  }
+}
+
+.car-filter {
+ margin-bottom: 52px;
+  @media @t {
+    margin-bottom: 40px;
+  }
+  @media @d {
+    margin-bottom: 157px;
   }
 }
 
 .car-color {
-  padding: 0 20px;
-  @media @t {
-    float: left;
-    width: 33.333333%;
+  &__wrapper {
+    .clearfix();
   }
   &__item {
-    display: inline-block;
-    margin-right: 30px;
+    float: left;
+    margin-right: 15px;
     &:last-child {
       margin-right: 0;
     }
@@ -331,15 +381,22 @@ body, input, textarea {
 }
 
 .car-table {
-  margin-bottom: 20px;
+  @media @t {
+    margin-bottom: 150px;
+  }
+  @media @d {
+    margin-bottom: 312px;
+  }
   &__header {
     color: @color_black;
     text-transform: uppercase;
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 700;
     position: relative;
-    padding-left: 20px;
+    padding-left: 15px;
     line-height: 1;
+    margin: 0;
+    margin-bottom: 26px;
     &::before {
       content: '';
       position: absolute;
@@ -363,10 +420,26 @@ body, input, textarea {
       overflow: hidden;
     }
   }
+  &__title {    
+    margin-bottom: 15px;
+    max-width: 45%;
+    @media @t {
+      margin-bottom: 6px;
+      white-space: nowrap; 
+      overflow: hidden;
+      text-overflow: ellipsis; 
+      max-width: 95%;
+    }
+    @media @d {
+      max-width: none;
+    }
+  }
   &__description {
     color: #8b9497;
     font-size: 13px;
-    margin-top: 5px;
+    @media @m {
+      margin-bottom: 15px;
+    }
   }
   &__color {
     display: inline-block;
@@ -397,14 +470,18 @@ body, input, textarea {
   .table {
     background: #f5f7f7;
     font-weight: 300;
-    font-size: 15px;
+    font-size: 14px;
     display: table;
     width: 100%;
+    border-collapse: collapse;
+    @media @t {
+      font-size: 15px;
+    }
     .tr {      
       border-bottom: 1px solid #e7eaeb;
       @media @m {
         position: relative;
-        padding: 20px;
+        padding: 20px 20px 26px;
       }
       @media @t {
         display: table-row;
@@ -421,34 +498,58 @@ body, input, textarea {
     .th {  
       @media @t {
         display: table-cell;    
-        padding: 8px;
+        padding: 14px 6px;
+        &:first-child {
+          padding-left: 14px;
+          max-width: 260px;
+        }
+      }
+      @media @d {
+        &:first-child {
+          max-width: 390px;
+        }
       }
     }
-    .td {
-      
+    .td {      
       @media @t {
         border-bottom: 1px solid #e7eaeb;
         display: table-cell;
-        padding: 8px;
+        padding: 6px;
+        &:first-child {
+          padding-left: 14px;
+          max-width: 260px;
+        }
+      }
+      @media @d {
+        &:first-child {
+          max-width: 390px;
+        }
+        padding: 8px 6px 6px;
       }
       &--price {
+        white-space: nowrap;
         @media @m {
           position: absolute;
           top: 20px;
-          right: 20px;
-          max-width: 150px;
+          right: 30px;
+          max-width: 105px;
         }
       }
       &--color {
         @media @m {
           position: absolute;
           top: 20px;
-          right: 170px;
+          right: 140px;
+        }
+        @media @t {
+          text-align: center;
         }
       }
       &--status {
+        white-space: nowrap;
         @media @m {
           display: inline-block;
+          margin-left: 20px;
         }
       }
       &--year {
@@ -458,7 +559,9 @@ body, input, textarea {
       }
       &--delete {
         @media @m {
-          float: right;
+          position: absolute;
+          right: 20px;
+          bottom: 18px;
         }
       }
       
@@ -467,7 +570,7 @@ body, input, textarea {
       background: @color_black;
       color: @color_white;
       border: none;
-      padding: 8px;
+      padding: 8px 12px;
       border-radius: 20px;
       cursor: pointer;      
       outline: none;
