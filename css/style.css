@@ -98,6 +98,14 @@ textarea {
   color: #111111;
   outline: none;
 }
+.input-item input.is-active + label {
+  bottom: auto;
+  top: 0;
+  cursor: default;
+}
+.input-item input.is-focused {
+  border-bottom-color: #111111;
+}
 .input-item input + label {
   position: absolute;
   left: 20px;
@@ -105,16 +113,10 @@ textarea {
   padding: 8px;
   font-size: 12px;
   color: #999999;
+  cursor: text;
 }
 .input-item input:hover {
   border-bottom-color: #c4092f;
-}
-.input-item input:focus {
-  border-bottom-color: #111111;
-}
-.input-item input:focus + label {
-  bottom: auto;
-  top: 0;
 }
 .input-item textarea {
   display: block;
@@ -135,12 +137,12 @@ textarea {
   font-size: 12px;
   color: #999999;
 }
-.input-item textarea:focus {
-  border-bottom-color: #111111;
-}
-.input-item textarea:focus + label {
+.input-item textarea.is-active + label {
   bottom: auto;
   top: 0;
+}
+.input-item textarea.is-focused {
+  border-bottom-color: #111111;
 }
 .input-item textarea:hover {
   border-bottom-color: #c4092f;
@@ -154,6 +156,65 @@ textarea {
   font-size: 12px;
   color: #111111;
   outline: none;
+}
+.input-item .custom-select {
+  position: relative;
+  cursor: pointer;
+}
+.input-item .custom-select.is-active .custom-select__button {
+  border-bottom-color: #111111;
+}
+.input-item .custom-select.is-active .custom-select__button::before {
+  border-top-width: 0;
+  border-bottom-width: 6px;
+  border-bottom-color: #111111;
+}
+.input-item .custom-select.is-active .custom-select__container {
+  display: block;
+}
+.input-item .custom-select__button {
+  color: #999999;
+  font-size: 12px;
+  padding: 8px;
+  border: 1px solid #dcdcdc;
+  border-bottom-width: 2px;
+  position: relative;
+}
+.input-item .custom-select__button:hover {
+  border-bottom-color: #c4092f;
+}
+.input-item .custom-select__button::before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-color: transparent;
+  border-top-color: #111111;
+  border-width: 6px 6px 0;
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  margin-top: -3px;
+}
+.input-item .custom-select__container {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  border-top-width: 0;
+  z-index: 1;
+  display: none;
+}
+.input-item .custom-select__option {
+  padding: 8px;
+  font-size: 12px;
+  color: #999999;
+}
+.input-item .custom-select__option:hover {
+  color: #222222;
 }
 .input-item button {
   display: block;
