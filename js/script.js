@@ -214,6 +214,7 @@ $(document).ready(function(){
       carTitle = 'Без названия';
     };
     
+    //формируем верстку
     var template = 
       '<div id="' + carId + '" class="tr">' +
         '<div class="td">' +
