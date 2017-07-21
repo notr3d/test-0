@@ -2,6 +2,7 @@ $(document).ready(function(){
   
   //label for inputs
   $('.input-item input, .input-item textarea').each(function(){
+    
     $(this).focusin(function(){
       $(this).addClass('is-active');
       $(this).addClass('is-focused');
@@ -71,6 +72,15 @@ $(document).ready(function(){
   var carForm = $('.car-filter form');
   carForm.on('submit', function(e){
     e.preventDefault();
+    $(this).trigger('reset');
+    $(this).find('.input-item input, .input-item textarea').each(function(){
+      $(this).removeClass('is-active');
+    });
+    $(this).find('.custom-select').each(function(){
+      $(this).find('.custom-select__button').text($(this).find('select').data('name'))
+    });
+    
+    
     var formData = $(this).serializeArray();
     var newCar = {};
     for (var i = 0; i < formData.length; i++){
@@ -97,8 +107,7 @@ $(document).ready(function(){
       
       newCar[key] = formData[i].value;
     }
-    console.log(newCar)
-    addCar(newCar)
+    addCar(newCar);
   });
   
   var carTable = $('.car-table .table');
