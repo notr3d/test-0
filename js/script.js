@@ -1,8 +1,7 @@
 $(document).ready(function(){
   
   //label for inputs
-  $('.input-item input, .input-item textarea').each(function(){
-    
+  $('.input-item input, .input-item textarea').each(function(){    
     $(this).focusin(function(){
       $(this).addClass('is-active');
       $(this).addClass('is-focused');
@@ -69,19 +68,15 @@ $(document).ready(function(){
   
   //frontend часть
   
+  
+  //событие отправки формы
   var carForm = $('.car-filter form');
   carForm.on('submit', function(e){
-    e.preventDefault();
-    $(this).trigger('reset');
-    $(this).find('.input-item input, .input-item textarea').each(function(){
-      $(this).removeClass('is-active');
-    });
-    $(this).find('.custom-select').each(function(){
-      $(this).find('.custom-select__button').text($(this).find('select').data('name'))
-    });
-    
+    e.preventDefault();    
     
     var formData = $(this).serializeArray();
+    
+    //создаем такой же объект как в json
     var newCar = {};
     for (var i = 0; i < formData.length; i++){
       var key;
@@ -103,21 +98,31 @@ $(document).ready(function(){
           break;
         case 'car-filter-status': 
           key = 'status';
-      }
-      
+      }      
       newCar[key] = formData[i].value;
-    }
+    };
+    
     addCar(newCar);
+    
+    //очищаем форму
+    $(this).trigger('reset');
+    $(this).find('.input-item input, .input-item textarea').each(function(){
+      $(this).removeClass('is-active');
+    });
+    $(this).find('.custom-select').each(function(){
+      $(this).find('.custom-select__button').text($(this).find('select').data('name'))
+    });    
   });
   
-  var carTable = $('.car-table .table');
   //очищаем таблицу от статики
+  var carTable = $('.car-table .table');
   carTable.find('.tr').each(function(){
     if(!$(this).hasClass('thead')){
       $(this).remove();
     }
   });
   
+  //формируем объекты из json
   var src = 'https://rawgit.com/Varinetz/e6cbadec972e76a340c41a65fcc2a6b3/raw/90191826a3bac2ff0761040ed1d95c59f14eaf26/frontend_test_table.json';
   
   $.getJSON(src, function(data){
@@ -126,10 +131,29 @@ $(document).ready(function(){
     });
   });
   
-  var carId = [];
+  var carIdArray = [];
   
+  //функция для генерации id
+  var getRandom = function(array){
+    var number;
+    do { 
+        number = Math.floor(Math.random() * 1000000); 
+    } while ($.inArray(number, array) > -1);
+    return number;
+  };
+  
+  //функция добавления элемента таблицы
   var addCar = function(car){
-    carId.push(car.id);
+    var carId;
+    if (car.id){
+      carId = car.id;
+    } else {
+      carId = getRandom(carIdArray);
+    };   
+    
+    carId = 'car-id-' + carId;
+    
+    carIdArray.push(carId);
     
     var carColor, carColorClass;
     switch(car.color){
@@ -155,7 +179,7 @@ $(document).ready(function(){
         break;        
       default:
         carColor = 'Неизестно';
-        carColorClass = 'car-table__color--black'; //пусть будет черный
+        carColorClass = 'car-table__color--mystery';
     }
     
     var carStatus;
@@ -173,21 +197,27 @@ $(document).ready(function(){
         carStatus = 'Неизестно';
     }
     
-    var carPrice = (car.price).toString() + ' руб.';
-    /*carPrice = carPrice.split('');
-    var tempArray = [], newArray = [];
-    for (var i = 0; i < carPrice.length; i += 3){
-        tempArray = carPrice.slice(carPrice.length - i - 3, carPrice.length - i);
-        tempArray.join('');
-        newArray.push(tempArray)
-    }
-    newArray.join('');
-    console.log(newArray)*/
+    var carPrice = car.price;
+    if (carPrice === ''){
+      carPrice = 0;
+    };
+    //с помощью регулярного выражения делаем формат цены
+    carPrice = carPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ') + ' руб.';
+    
+    var carYear = car.year;
+    if (carYear === ''){
+      carYear = 'Неизвестно';
+    };
+    
+    var carTitle = car.title;
+    if (carTitle === ''){
+      carTitle = 'Без названия';
+    };
     
     var template = 
-      '<div id="' + car.id + '" class="tr">' +
+      '<div id="' + carId + '" class="tr">' +
         '<div class="td">' +
-          '<div class="car-table__title">' + car.title + '</div>';
+          '<div class="car-table__title">' + carTitle + '</div>';
     
     if (!car.description == ''){
       template += '<div class="car-table__description">' + car.description + '</div>';
@@ -195,7 +225,7 @@ $(document).ready(function(){
     
     template += 
       '</div>' +
-      '<div class="td td--year">' + car.year + '</div>' +
+      '<div class="td td--year">' + carYear + '</div>' +
       '<div class="td td--color">' +
         '<span class="car-table__color ' + carColorClass + '">' + carColor + '</span>' +
       '</div>' +
@@ -205,10 +235,19 @@ $(document).ready(function(){
         '<button>Удалить</button>' +
       '</div>' +
     '</div>';
-    carTable.append(template)
+    
+    carTable.append(template);
   };
   
+  
+  //удаление из таблицы 
   $('body').on('click', '.td--delete button', function(){
-    $(this).closest('.tr').remove();
-  })
+    var id = $(this).closest('.tr').prop('id');
+    $('#' + id).remove();
+    for (var i = 0; i < carIdArray.length; i++){
+      if (id === carIdArray[i]){
+        carIdArray.splice(i, 1);
+      }
+    }
+  });
 });

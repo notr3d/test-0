@@ -464,12 +464,19 @@ body, input, textarea {
     }
     &--grey {
       background: #cbcbcc;
-    }
-    
+    }    
     &--green {
       background: #88c504;
     }
-    
+    &--mystery {
+      background: #ddd;  
+      text-align: center;
+      &::before {
+        content: '?';
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
   }
   .table {
     background: #f5f7f7;

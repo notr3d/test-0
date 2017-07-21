@@ -452,6 +452,15 @@ textarea {
 .car-table__color--green {
   background: #88c504;
 }
+.car-table__color--mystery {
+  background: #ddd;
+  text-align: center;
+}
+.car-table__color--mystery::before {
+  content: '?';
+  font-size: 12px;
+  line-height: 20px;
+}
 .car-table .table {
   background: #f5f7f7;
   font-weight: 300;
